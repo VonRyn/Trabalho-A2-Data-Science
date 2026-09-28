@@ -1,9 +1,13 @@
 # Trabalho A2 - execução
 
+**Aluno:** Christian Gustavo Von Ryn  
+**RGM:** 43384323  
+**Desenvolvimento:** Individual
+
 ## Conteúdo
 
 - Código-fonte: `analise_cortes.py`, `modelagem.py` e `inspecionar_bases.py`.
-- Bases: `dados_uci/Customer Churn.csv`, `spam.csv` e `fraud.csv`.
+- Bases: `dados/Customer Churn.csv`, `dados/spam.csv` e `dados/fraud.csv`.
 - Fontes e licenças: `FONTES_E_LICENCAS.md`.
 - Relatório: `relatorio.md`; figuras em `resultados/`.
 
@@ -30,7 +34,7 @@ As versões utilizadas estão em `resultados/versoes.json`. Os CSVs originais
 não são alterados pela execução. Os resultados foram verificados quanto a
 separação das partições, reprodução das métricas, contagens por faixa e SHAP.
 
-## Pendências obrigatórias antes da entrega
+## Fonte dos dados de spam
 
-Confirmar a fonte/versão e licença do arquivo local `spam.csv`, conforme
-detalhado em `FONTES_E_LICENCAS.md`, e identificar os integrantes no relatório.
+A fonte e a licença da versão utilizada de `spam.csv` permanecem sem
+confirmação. A divergência está documentada em `FONTES_E_LICENCAS.md`.

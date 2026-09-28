@@ -11,7 +11,7 @@ import sys
 import os
 
 RAIZ = Path(__file__).resolve().parent
-# Bibliotecas instaladas localmente nesta sessao; nao altera o Python global.
+# Suporte opcional a dependencias instaladas no diretorio do projeto.
 if (RAIZ / ".deps_modelagem").is_dir():
     sys.path.insert(0, str(RAIZ / ".deps_modelagem"))
 os.environ.setdefault("MPLCONFIGDIR", str(RAIZ / ".mplconfig"))

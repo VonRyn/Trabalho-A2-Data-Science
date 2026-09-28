@@ -1,8 +1,11 @@
-# A2 - metodologia e resultados para revisão da equipe
+# Trabalho A2 — Data Science
 
-Este documento reúne resultados efetivamente calculados, como base para a
-redação do relatório. Falta confirmar a origem/versão exata de `spam.csv`,
-completar a identificação da equipe e revisar as interpretações. Fontes e
+**Aluno:** Christian Gustavo Von Ryn  
+**RGM:** 43384323  
+**Desenvolvimento:** Individual
+
+Este relatório apresenta a metodologia e os resultados da comparação de
+modelos de classificação binária em três domínios. As fontes e
 licenças estão em [FONTES_E_LICENCAS.md](FONTES_E_LICENCAS.md).
 
 ## Objetivo e desenho experimental
@@ -42,7 +45,7 @@ Acurácia mede a fração total de acertos. Precisão é TP/(TP+FP), recall é
 TP/(TP+FN) e F1 é a média harmônica de precisão e recall. Todas as métricas de
 decisão e matrizes abaixo usam **probabilidade >= 0,50** para classe positiva.
 Se o modelo não prevê positivos, a precisão é indefinida; o programa registra
-0 por convenção (`zero_division=0`), o que deve ser explicitado na leitura.
+0 por convenção (`zero_division=0`).
 
 As curvas ROC e PR são construídas variando o limiar sobre as probabilidades.
 ROC representa recall versus FP/(FP+TN); PR representa precisão versus recall.
@@ -55,12 +58,12 @@ capacidade de ordenação.
 
 ## Política das três faixas
 
-Foram adotados limites **didáticos**, sem alegar que são exigências de uma
-empresa: churn permite até 15% de FN automáticos entre positivos e 10% de FP
+Foram adotados limites **didáticos** para este experimento: churn permite
+até 15% de FN automáticos entre positivos e 10% de FP
 automáticos entre negativos; spam, 10% e 0,5%; fraude, 5% e 1%. A política mais
 restritiva para FP em spam reflete o custo de bloquear mensagens legítimas;
 o limite mais restritivo de FN em fraude reflete o risco de deixar fraudes
-passarem. Esses limites precisam ser discutidos e defendidos pela equipe.
+passarem. Os limites representam hipóteses do estudo, não requisitos de uma empresa.
 
 Na validação, o programa buscou pares em uma grade de 0 a 1, com passos de
 0,01 e pontos adicionais 0,001/0,999. Entre pares que respeitam os limites,
@@ -224,7 +227,7 @@ O SHAP explica os log-odds do Naive Bayes, não probabilidades diretamente. Valo
 
 ## Fraude sintética
 
-Foram utilizadas 7000 das 7000 linhas, com remoção de 0 duplicatas. Essa decisão define a população avaliada como registros distintos e pode alterar a prevalência em relação ao CSV original.
+Foram utilizadas as 7.000 linhas da base de fraude. Não foram encontradas duplicatas exatas.
 
 
 | Conjunto | Classe | Quantidade | % no conjunto |
@@ -317,6 +320,5 @@ dominar a política quando o modelo tem pouco poder de separação. O programa
 de cortes permite quantificar esse compromisso, sem confundir probabilidades
 previstas com a classe real nem esconder os denominadores dos erros.
 
-Antes da entrega: confirmar a origem/licença do CSV de spam, revisar o texto
-com a equipe, explicar os limites didáticos e preparar a defesa individual.
-Não incluir o antigo CSV bancário nem a pasta `resultados/churn` na entrega.
+A origem e a licença da versão utilizada de `spam.csv` permanecem sem
+confirmação, conforme documentado em `FONTES_E_LICENCAS.md`.
