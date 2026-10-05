@@ -74,9 +74,11 @@ Os limites de validação não são garantias para dados novos. Não se alterara
 os cortes após observar o teste.
 
 Os histogramas usam intervalos de dez pontos percentuais. As barras azuis
-representam todos os casos e as vermelhas os positivos reais, ambas divididas
-pelo total de casos do teste. A soma azul é 100%; a soma vermelha é a prevalência
-positiva, e não 100%.
+representam todos os casos, divididos pelo total de casos do teste. As barras
+vermelhas representam os positivos reais, divididos pelo total de positivos
+reais do teste. Cada cor soma 100% separadamente ao longo das três faixas:
+negativo automático + revisão manual + positivo automático = 100% para azul
+e 100% para vermelho.
 
 
 ## Churn em telecomunicações - UCI

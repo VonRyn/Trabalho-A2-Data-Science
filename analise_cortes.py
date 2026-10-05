@@ -104,24 +104,24 @@ def analisar_cortes(
     n_pos = int(mask_pos.sum())
     n_neg = n_total - n_pos
 
-    # ---- Histograma (mesmo denominador = total de instancias, para as duas cores) ----
+    # ---- Histograma (cada cor normalizada pelo total do grupo representado) ----
     bordas = np.append(np.arange(0, 100, largura_intervalo), 100)
 
     contagem_todas, _ = np.histogram(prob_pct, bins=bordas)
     contagem_positivas, _ = np.histogram(prob_pct[mask_pos], bins=bordas)
 
     pct_todas = contagem_todas / n_total * 100
-    pct_positivas_mesmo_denominador = contagem_positivas / n_total * 100
+    pct_positivas = contagem_positivas / n_pos * 100 if n_pos > 0 else np.zeros_like(contagem_positivas, dtype=float)
 
     centros = (bordas[:-1] + bordas[1:]) / 2
     largura_barra = np.diff(bordas) * 0.9
 
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.bar(centros, pct_todas, width=largura_barra, color="steelblue",
-           alpha=0.85, label="Todas as instancias", edgecolor="white")
-    ax.bar(centros, pct_positivas_mesmo_denominador, width=largura_barra * 0.6,
+           alpha=0.85, label="Todas as instancias (total = 100%)", edgecolor="white")
+    ax.bar(centros, pct_positivas, width=largura_barra * 0.6,
            color="crimson", alpha=0.85,
-           label=f"Instancias reais positivas ({nome_classe_positiva})",
+           label=f"Instancias reais positivas ({nome_classe_positiva}; total = 100%)" if n_pos > 0 else "Sem instancias reais positivas",
            edgecolor="white")
 
     ax.axvline(t1 * 100, color="black", linestyle="--", linewidth=1.5)
@@ -132,7 +132,7 @@ def analisar_cortes(
             rotation=90, va="top", ha="left", fontsize=9)
 
     ax.set_xlabel("Probabilidade estimada da classe positiva (%)")
-    ax.set_ylabel("Percentual de instancias (%)")
+    ax.set_ylabel("Percentual do total de cada grupo (%)")
     ax.set_xlim(0, 100)
     ax.set_title(titulo)
     ax.legend()
